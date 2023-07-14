@@ -1,0 +1,29 @@
+{
+    "name": "cordova-plugin-media-retriever",
+    "version": "0.0.1",
+    "description": "Cordova Media Retriever Plugin",
+    "cordova": {
+      "id": "cordova-plugin-media-retriever",
+      "platforms": [
+        "android"
+      ]
+    },
+    "keywords": [
+      "cordova",
+      "media",
+      "capture",
+      "ecosystem:cordova",
+      "cordova-android"
+    ],
+    "author": "valery-designer",
+    "license": "Apache-2.0",
+    "engines": {
+      "cordovaDependencies": {
+        "0.0.1": {
+          "cordova": ">=9.0.0",
+          "cordova-android": ">=9.0.0"
+        }
+      }
+    }
+}
+  

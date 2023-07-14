@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+xmlns:android="http://schemas.android.com/apk/res/android"
+           id="cordova-plugin-media-retriever"
+      version="0.0.1">
+    <name>Retriever</name>
+
+    <description>Cordova Media Retriever Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,media</keywords>
+    <repo>https://github.com/valery-designer/cordova-plugin-media-retriever</repo>
+
+    <js-module src="www/retriever.js" name="retriever">
+    <clobbers target="retriever" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Retriever" >
+                <param name="android-package" value="com.valerydesigner.mediaretriever.Retriever"/>
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.CAMERA" />
+            <uses-permission android:name="android.permission.INTERNET" />
+        </config-file>
+
+        <edit-config file="AndroidManifest.xml" mode="overwrite" target="/manifest/uses-feature[@android:name='android.hardware.camera']">
+            <uses-feature android:name="android.hardware.camera" />
+        </edit-config>
+
+        <framework src="androidx.appcompat:appcompat:1.2.0" />
+        <framework src="com.squareup.okhttp3:okhttp:4.9.0" />
+        <framework src="com.google.code.gson:gson:2.8.6" />
+
+        <source-file src="src/android/Retriever.java" target-dir="src/com/valerydesigner/mediaretriever" />
+        <source-file src="src/android/ExifHelper.java" target-dir="src/com/valerydesigner/mediaretriever" />
+        <source-file src="src/android/FileHelper.java" target-dir="src/com/valerydesigner/mediaretriever" />
+        <source-file src="src/android/CountingRequestBody.java" target-dir="src/com/valerydesigner/mediaretriever" />
+        <source-file src="src/android/UriRequestBody.java" target-dir="src/com/valerydesigner/mediaretriever" />
+
+    </platform>
+
+    <!-- browser -->
+    <platform name="browser">
+        <!-- this overrides navigator.device.capture namespace with browser-specific implementation -->
+        <js-module src="src/browser/RetrieverProxy.js" name="RetrieverProxy">
+            <runs />
+        </js-module>
+    </platform>
+
+</plugin>
